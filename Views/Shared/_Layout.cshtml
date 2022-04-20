@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" href="/css/site.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    
+</head>
+<body>
+    <header>
+        <div class="title">
+            <div>
+                <div class="logo">BW</div>
+            </div>
+            <div class="title-text">Blog</div>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="/Home/">
+                        <div class="nav-item">
+                            Home
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Posts/">
+                        <div class="nav-item">
+                            Posts
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Categories/">
+                        <div class="nav-item">
+                            Categories
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Tags/">
+                        <div class="nav-item">
+                            Tags
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>
+        &copy; Brad Weir 2022
+    </footer>
+    @RenderSection("Scripts",false)
+</body>
+</html>

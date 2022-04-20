@@ -1,0 +1,36 @@
+﻿@model template_csharp_blog.Models.Category
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="main-title">
+    <div class="main-title-title">
+        <h1>Edit Category</h1>
+    </div>
+    <div class="main-title-controls">
+        <a class="control-link" asp-action="Index">
+            <div class="control">Cancel</div>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group category-tag-save">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,105 @@
+﻿@model template_csharp_blog.Models.Post
+
+@{
+    ViewData["Title"] = "Details";
+    List<Tag> SelectedTags = (List<Tag>)ViewData["SelectedTags"];
+}
+
+<div class="main-title">
+    <div class="main-title-title">
+        <h1>Details</h1>
+    </div>
+    <div class="main-title-controls">
+        
+    </div>
+</div>
+
+<div class="post">
+    <div class="post-title">
+       <h1>@Html.DisplayFor(model => model.Title)</h1>
+    </div>
+    <div class="post-category">
+       <h2>@Html.DisplayFor(model => model.Category.Name)</h2>
+    </div>
+    <div class="post-content">
+        @Html.DisplayFor(model => model.Content)
+    </div>
+    <div class="post-date">
+        <div class="original-post-date">
+            @Html.DisplayFor(model => model.Date)
+        </div>
+        <div class="edited-post-date">
+            Edited: @Html.DisplayFor(model => model.EditDate)
+        </div>
+    </div>
+    <div class="post-tags">
+        @foreach (Tag tag in SelectedTags)
+        {
+            <a class="control-link" asp-controller="Tags" asp-action="Details" asp-route-id="@tag.Id">
+                <div class="tag selected">
+                    @tag.Name
+                </div>
+            </a>
+        }
+    </div>
+    <div class="post-controls">
+        <a class="control-link" asp-controller="Posts" asp-action="Edit" asp-route-id="@Model.Id">
+            <div class="control">              
+                    Edit
+            </div>
+        </a>      
+    </div>
+</div>
+
+
+@*<h1>Details</h1>
+
+<div>
+    <h4>Post</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        @if (Model.EditDate != null)
+        {
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.EditDate)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.EditDate)
+            </dd>
+        }
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Tags
+        </dt>
+        <dd class = "col-sm-10">
+            @string.Join(',',SelectedTagNames)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>*@

@@ -1,0 +1,72 @@
+﻿@model template_csharp_blog.Models.Tag
+
+@{
+    ViewData["Title"] = "Details";
+    List<Post> relatedPosts = (List<Post>)ViewData["RelatedPosts"];
+}
+
+<div class="main-title">
+    <div class="main-title-title">
+        <h1>Tag: @Html.DisplayFor(model => model.Name)</h1>
+    </div>
+    <div class="main-title-controls">
+        <a class="control-link" asp-action="Edit">
+            <div class="control">
+                Edit
+            </div>
+        </a>
+        <a class="control-link" asp-action="Index">
+            <div class="control">
+                Cancel
+            </div>
+        </a>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+
+            <th>
+                Date
+            </th>
+
+            <th>
+                Category
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in relatedPosts) {
+        <tr>
+            <td>
+                <a class="title-link" asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id">
+                @item.Title
+                </a>
+            </td>
+
+            <td>
+                @item.Date
+            </td>
+
+            <td>
+                @item.Category.Name
+            </td>
+            <td>
+                <div class="index-controls">
+                    <a class="control-link" asp-controller="Posts" asp-action="Edit" asp-route-id="@item.Id">
+                        <div class="control">Edit</div>
+                    </a>
+                    <a class="control-link" asp-controller="Posts" asp-action="Delete" asp-route-id="@item.Id">
+                        <div class="control">Delete</div>
+                    </a>
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

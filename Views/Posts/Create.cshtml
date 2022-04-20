@@ -1,0 +1,96 @@
+﻿@model template_csharp_blog.Models.Post
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="main-title">
+    <div class="main-title-title">
+        <h1>Create Post</h1>
+    </div>
+    <div class="main-title-controls">
+        <a class="control-link" asp-action="Index">
+            <div class="control">Cancel</div>
+        </a>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Date" />
+            <input type="hidden" asp-for="EditDate" />
+            <div class="post-create-edit">
+            <div class="form-group post-create-edit-title">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group post-create-edit-category">
+                <label asp-for="CategoryId" class="control-label">Category</label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group post-create-edit-content">
+                @*<label asp-for="Content" class="control-label"></label>*@
+                <textarea asp-for="Content" class="form-control" ></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group post-create-edit-tags">
+                <label>Select Tags (Ctrl+Click to Select Multiple)</label>
+                @Html.ListBox("Tags", (MultiSelectList)ViewBag.TagIds)               
+            </div>
+            <div class="form-group post-create-edit-save">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*<h1>Create</h1>
+
+<h4>Post</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Date" />
+            <input type="hidden" asp-for="EditDate" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <textarea asp-for="Content" class="form-control" ></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>Select Tags (use Shift+Click)</label>
+                @Html.ListBox("Tags", (MultiSelectList)ViewBag.TagIds)
+
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

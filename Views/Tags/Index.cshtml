@@ -1,0 +1,51 @@
+﻿@model IEnumerable<template_csharp_blog.Models.Tag>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="main-title">
+    <div class="main-title-title">
+        <h1>Index</h1>
+    </div>
+    <div class="main-title-controls">
+        <a class="control-link" asp-action="Create">
+            <div class="control">
+                Create New
+            </div>
+        </a>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tag
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a class="title-link" asp-action="Details" asp-route-id="@item.Id">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </a>
+            </td>
+            <td>
+                <div class="index-controls">
+                    <a class="control-link" asp-action="Edit" asp-route-id="@item.Id">
+                        <div class="control">Edit</div>
+                    </a>
+                    <a class="control-link" asp-action="Delete" asp-route-id="@item.Id">
+                        <div class="control">Delete</div>
+                    </a>
+                </div>
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
